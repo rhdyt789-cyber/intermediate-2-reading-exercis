@@ -1,19 +1,30 @@
-```html
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Listening Exercise - Finding the Library</title>
+<title>Advanced Reading Quiz - Letter to a Friend</title>
 
 <style>
+*{
+    box-sizing:border-box;
+}
 
 body{
     font-family: Arial, sans-serif;
+    background:#f4f6f9;
+    margin:0;
+    padding:20px;
+    color:#333;
+}
+
+.container{
     max-width:1000px;
     margin:auto;
-    padding:20px;
-    background:#f5f7fb;
+    background:#fff;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
 }
 
 h1{
@@ -21,333 +32,237 @@ h1{
     color:#2c3e50;
 }
 
-.card{
-    background:white;
-    padding:25px;
-    border-radius:15px;
-    margin-top:20px;
-    box-shadow:0 3px 10px rgba(0,0,0,.1);
-}
-
-.word-bank{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
+.reading{
+    background:#eef7ff;
+    border-left:6px solid #3498db;
+    padding:20px;
+    border-radius:10px;
     margin-bottom:25px;
-}
-
-.word{
-    background:#4361ee;
-    color:white;
-    padding:10px 15px;
-    border-radius:8px;
-    cursor:grab;
-    font-weight:bold;
-}
-
-.question{
-    margin:20px 0;
-    font-size:18px;
     line-height:1.8;
 }
 
-.dropzone{
-    display:inline-block;
-    min-width:120px;
-    min-height:35px;
-    border:2px dashed #4361ee;
+.question{
+    margin-bottom:20px;
+    padding:15px;
+    background:#fafafa;
     border-radius:8px;
-    text-align:center;
-    background:white;
-    vertical-align:middle;
 }
 
-.correct{
-    background:#06d6a0 !important;
-    color:white;
-    border-color:#06d6a0 !important;
+.question p{
+    font-weight:bold;
 }
 
-.wrong{
-    background:#ef233c !important;
-    color:white;
-    border-color:#ef233c !important;
+label{
+    display:block;
+    margin:8px 0;
+    cursor:pointer;
 }
 
-.feedback{
-    color:#ef233c;
-    font-size:14px;
-    margin-top:5px;
+.progress{
+    width:100%;
+    background:#ddd;
+    border-radius:20px;
+    overflow:hidden;
+    margin-bottom:20px;
+}
+
+.progress-bar{
+    height:20px;
+    width:0%;
+    background:#27ae60;
+    transition:0.3s;
 }
 
 button{
-    background:#4361ee;
+    background:#3498db;
     color:white;
     border:none;
-    padding:12px 25px;
+    padding:14px 25px;
     border-radius:8px;
-    font-size:18px;
+    font-size:16px;
     cursor:pointer;
 }
 
 button:hover{
-    opacity:.9;
+    background:#2980b9;
 }
 
 #result{
     margin-top:25px;
-    font-size:24px;
-    font-weight:bold;
+    padding:20px;
+    border-radius:10px;
     text-align:center;
-}
-
-.tf-feedback{
-    margin-left:10px;
+    font-size:20px;
     font-weight:bold;
 }
 
+.correct{
+    color:green;
+}
+
+.incorrect{
+    color:red;
+}
 </style>
 </head>
+
 <body>
 
-<h1>🎧 Finding the Library</h1>
+<div class="container">
+<div class="reading">
 
-<audio controls style="width:100%;">
-<source src="0L4-finding-the-library.mp3" type="audio/mpeg">
-</audio>
+</div>
 
-<div class="card">
+<div class="progress">
+<div class="progress-bar" id="progressBar"></div>
+</div>
 
-<h2>Part 1: Drag the Words</h2>
+<form id="quizForm">
 
-<div class="word-bank">
-
-<div class="word" draggable="true" id="library">library</div>
-<div class="word" draggable="true" id="bridge">bridge</div>
-<div class="word" draggable="true" id="supermarket">supermarket</div>
-<div class="word" draggable="true" id="right">right</div>
-<div class="word" draggable="true" id="park">park</div>
-<div class="word" draggable="true" id="red">red</div>
-
+<div class="question">
+<p>1. Why did Patrick write the email?</p>
+<label><input type="radio" name="q1" value="c"> To update Fred about his semester abroad</label>
+<label><input type="radio" name="q1" value="a"> To complain about Spain</label>
+<label><input type="radio" name="q1" value="b"> To invite Fred to France</label>
+<label><input type="radio" name="q1" value="d"> To ask for help</label>
 </div>
 
 <div class="question">
-1. John is looking for the
-<span class="dropzone" data-answer="library"></span>
+<p>2. How long has Patrick been in Spain?</p>
+<label><input type="radio" name="q2" value="b"> Six weeks</label>
+<label><input type="radio" name="q2" value="a"> Four weeks</label>
+<label><input type="radio" name="q2" value="c"> Two months</label>
+<label><input type="radio" name="q2" value="d"> One year</label>
 </div>
 
 <div class="question">
-2. John needs to cross the river on a
-<span class="dropzone" data-answer="bridge"></span>
+<p>3. Where is Patrick studying?</p>
+<label><input type="radio" name="q3" value="d"> Spain</label>
+<label><input type="radio" name="q3" value="a"> France</label>
+<label><input type="radio" name="q3" value="b"> Italy</label>
+<label><input type="radio" name="q3" value="c"> Portugal</label>
 </div>
 
 <div class="question">
-3. John will see a big
-<span class="dropzone" data-answer="supermarket"></span>
-on his left.
+<p>4. Patrick lives with...</p>
+<label><input type="radio" name="q4" value="c"> A host family</label>
+<label><input type="radio" name="q4" value="a"> Relatives</label>
+<label><input type="radio" name="q4" value="b"> Friends</label>
+<label><input type="radio" name="q4" value="d"> Alone</label>
 </div>
 
 <div class="question">
-4. He should turn
-<span class="dropzone" data-answer="right"></span>
-after the supermarket.
+<p>5. Which meal is usually the biggest in Spain?</p>
+<label><input type="radio" name="q5" value="c"> Lunch</label>
+<label><input type="radio" name="q5" value="a"> Breakfast</label>
+<label><input type="radio" name="q5" value="b"> Brunch</label>
+<label><input type="radio" name="q5" value="d"> Dinner</label>
 </div>
 
 <div class="question">
-5. The library is across from the
-<span class="dropzone" data-answer="park"></span>
+<p>6. What does "fluently" mean?</p>
+<label><input type="radio" name="q6" value="b"> Naturally and smoothly</label>
+<label><input type="radio" name="q6" value="a"> Slowly</label>
+<label><input type="radio" name="q6" value="c"> Loudly</label>
+<label><input type="radio" name="q6" value="d"> Carefully</label>
 </div>
 
 <div class="question">
-6. The library is a big building with a
-<span class="dropzone" data-answer="red"></span>
-roof.
-</div>
-
-</div>
-
-<div class="card">
-
-<h2>Part 2: True or False</h2>
-
-<div class="question">
-1. John knows the town very well.
-<label><input type="radio" name="tf1" value="True"> True</label>
-<label><input type="radio" name="tf1" value="False"> False</label>
-<span id="fb1" class="tf-feedback"></span>
+<p>7. What does "welcoming" mean?</p>
+<label><input type="radio" name="q7" value="c"> Friendly and hospitable</label>
+<label><input type="radio" name="q7" value="a"> Strict</label>
+<label><input type="radio" name="q7" value="b"> Wealthy</label>
+<label><input type="radio" name="q7" value="d"> Busy</label>
 </div>
 
 <div class="question">
-2. John is visiting the town for only one day.
-<label><input type="radio" name="tf2" value="True"> True</label>
-<label><input type="radio" name="tf2" value="False"> False</label>
-<span id="fb2" class="tf-feedback"></span>
+<p>8. Patrick's Spanish has improved because...</p>
+<label><input type="radio" name="q8" value="a"> He practices with native speakers</label>
+<label><input type="radio" name="q8" value="b"> He only studies grammar</label>
+<label><input type="radio" name="q8" value="c"> He watches TV all day</label>
+<label><input type="radio" name="q8" value="d"> He rarely speaks Spanish</label>
 </div>
 
 <div class="question">
-3. The library is very far away.
-<label><input type="radio" name="tf3" value="True"> True</label>
-<label><input type="radio" name="tf3" value="False"> False</label>
-<span id="fb3" class="tf-feedback"></span>
+<p>9. What can be inferred about Patrick's experience in Spain?</p>
+<label><input type="radio" name="q9" value="c"> He is adapting successfully</label>
+<label><input type="radio" name="q9" value="a"> He regrets going</label>
+<label><input type="radio" name="q9" value="b"> He wants to leave</label>
+<label><input type="radio" name="q9" value="d"> He feels lonely</label>
 </div>
 
 <div class="question">
-4. John must cross a river to get to the library.
-<label><input type="radio" name="tf4" value="True"> True</label>
-<label><input type="radio" name="tf4" value="False"> False</label>
-<span id="fb4" class="tf-feedback"></span>
+<p>10. What is Patrick going to do during the extended weekend?</p>
+<label><input type="radio" name="q10" value="d"> Travel to France</label>
+<label><input type="radio" name="q10" value="a"> Return home</label>
+<label><input type="radio" name="q10" value="b"> Visit Fred</label>
+<label><input type="radio" name="q10" value="c"> Stay in Málaga</label>
 </div>
 
-<div class="question">
-5. John should turn left after the supermarket.
-<label><input type="radio" name="tf5" value="True"> True</label>
-<label><input type="radio" name="tf5" value="False"> False</label>
-<span id="fb5" class="tf-feedback"></span>
-</div>
+<button type="button" onclick="gradeQuiz()">Submit Quiz</button>
 
-<div class="question">
-6. The library is next to the park.
-<label><input type="radio" name="tf6" value="True"> True</label>
-<label><input type="radio" name="tf6" value="False"> False</label>
-<span id="fb6" class="tf-feedback"></span>
-</div>
-
-<div class="question">
-7. The library has a red roof.
-<label><input type="radio" name="tf7" value="True"> True</label>
-<label><input type="radio" name="tf7" value="False"> False</label>
-<span id="fb7" class="tf-feedback"></span>
-</div>
-
-</div>
-
-<div style="text-align:center;margin-top:20px;">
-<button onclick="checkAnswers()">Check Answers</button>
-<button onclick="location.reload()">Try Again</button>
-</div>
+</form>
 
 <div id="result"></div>
 
+</div>
+
 <script>
 
-const draggables=document.querySelectorAll('.word');
-const dropzones=document.querySelectorAll('.dropzone');
-
-draggables.forEach(item=>{
-
-item.addEventListener('dragstart',e=>{
-e.dataTransfer.setData('text',item.id);
-});
-
-});
-
-dropzones.forEach(zone=>{
-
-zone.addEventListener('dragover',e=>{
-e.preventDefault();
-});
-
-zone.addEventListener('drop',e=>{
-
-e.preventDefault();
-
-const id=e.dataTransfer.getData('text');
-
-zone.innerHTML=id;
-zone.dataset.user=id;
-
-});
-
-});
-
-function checkAnswers(){
-
-let score=0;
-
-// Fill blanks
-
-dropzones.forEach(zone=>{
-
-if(zone.dataset.user===zone.dataset.answer){
-
-zone.classList.add("correct");
-score++;
-
-}else{
-
-zone.classList.add("wrong");
-
-zone.innerHTML=
-(zone.dataset.user || "blank")
-+"<br><small>✓ "
-+zone.dataset.answer+
-"</small>";
-
-}
-
-});
-
-// True False
-
-const answers={
-tf1:"False",
-tf2:"True",
-tf3:"False",
-tf4:"True",
-tf5:"False",
-tf6:"False",
-tf7:"True"
+const answers = {
+q1:"c",
+q2:"b",
+q3:"d",
+q4:"c",
+q5:"c",
+q6:"b",
+q7:"c",
+q8:"a",
+q9:"c",
+q10:"d"
 };
 
-for(let key in answers){
+const form = document.getElementById("quizForm");
+const progressBar = document.getElementById("progressBar");
 
-const selected=document.querySelector(
-`input[name="${key}"]:checked`
-);
+form.addEventListener("change", () => {
+    const answered = document.querySelectorAll("input[type=radio]:checked").length;
+    progressBar.style.width = (answered/10)*100 + "%";
+});
 
-const feedback=document.getElementById(
-"fb"+key.replace("tf","")
-);
+function gradeQuiz(){
 
-if(selected){
+    let score = 0;
 
-if(selected.value===answers[key]){
+    for(let q in answers){
+        const selected = document.querySelector(`input[name="${q}"]:checked`);
+        if(selected && selected.value === answers[q]){
+            score++;
+        }
+    }
 
-feedback.innerHTML="✓";
-feedback.style.color="green";
-score++;
+    const percentage = Math.round((score/10)*100);
 
-}else{
+    let message = "";
 
-feedback.innerHTML=
-"Correct: "+answers[key];
-feedback.style.color="red";
+    if(percentage >= 90){
+        message = "🏆 Excellent! Advanced reading skills.";
+    }
+    else if(percentage >= 70){
+        message = "👏 Very Good! You understood most of the text.";
+    }
+    else if(percentage >= 50){
+        message = "👍 Good effort. Review some details and vocabulary.";
+    }
+    else{
+        message = "📚 Read the passage again and try once more.";
+    }
 
-}
-
-}else{
-
-feedback.innerHTML=
-"Correct: "+answers[key];
-feedback.style.color="red";
-
-}
-
-}
-
-let percent=Math.round((score/13)*100);
-
-document.getElementById("result").innerHTML=
-`
-Score: ${score}/13
-<br>
-Percentage: ${percent}%
-`;
-
+    document.getElementById("result").innerHTML =
+    `Score: ${score}/10 (${percentage}%)<br><br>${message}`;
 }
 
 </script>
 
 </body>
 </html>
-```
